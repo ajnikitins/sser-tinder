@@ -2,7 +2,7 @@
 
 <?=$setting->promo_text ?>
 
-<div class="col-md animated fadeInLeft">
+<div class="col-md-4 animated fadeInLeft">
 <div class="well">
 
 <?php if(!empty($this->msg_error_left) ): ?>
@@ -60,7 +60,7 @@
 </div>
 </div>
 
-<?php //$this->load->view('auth/register'); // Add the Register form view as well ?>
+<?php $this->load->view('auth/register'); // Add the Register form view as well ?>
 
 <?=$setting->service_description ?>
 
