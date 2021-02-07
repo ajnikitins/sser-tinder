@@ -988,10 +988,11 @@ class User extends Website_Controller
         } else {
             $ip = $_SERVER['REMOTE_ADDR'];
         }
-        $data = json_decode(file_get_contents("http://freegeoip.net/json/$ip"), true);
+        $response = json_decode(file_get_contents("http://ip-api.com/json/$ip"), true);
 
-        $data['country'] = $data['country_name'];
-        $data['city'] = $data['city'];
+        $data = array();
+        $data['country'] = $response['country_name'];
+        $data['city'] = $response['city'];
         if (!empty($data)) {
             $data = array();
             $data['country'] = 'other';
