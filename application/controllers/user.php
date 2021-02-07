@@ -996,13 +996,9 @@ class User extends Website_Controller
         $response = json_decode(file_get_contents("http://ip-api.com/json/$ip"), true);
 
         $data = array();
-        $data['country'] = $response['country_name'];
-        $data['city'] = $response['city'];
-        if (!empty($data)) {
-            $data = array();
-            $data['country'] = 'other';
-            $data['city'] = 'other';
-        }
+        $data['country'] = $response['country'] ? $response['country'] : 'other';
+        $data['city'] = $response['city'] ? $response['city'] : 'other';
+
         return $data;
     }
 
