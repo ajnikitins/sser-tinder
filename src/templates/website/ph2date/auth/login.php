@@ -2,11 +2,11 @@
 
 <?=$setting->promo_text ?>
 
-<div class="col-md-4 animated fadeInLeft">
+<div class="col-md animated fadeInLeft">
 <div class="well">
 
 <?php if(!empty($this->msg_error_left) ): ?>
-    <div id="" class="alert alert-danger"><?php echo $this->msg_error_left;?></div>
+    <div id="msg_error" class="alert alert-danger"><?php echo $this->msg_error_left;?></div>
 <?php endif ?>
 
 <?php if(!empty($this->msg_success_left)): ?>
@@ -22,21 +22,21 @@
 
   <?php echo form_input($id_token); ?>
 
-  <p><?php echo form_submit('submit', lang('login_submit_btn'),'class="btn btn-default"');?></p>
+<!--  <p>--><?php //echo form_submit('submit', lang('login_submit_btn'),'class="btn btn-default"');?><!--</p>-->
 <?php echo form_close();?>
 
   <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
   <script>
     function onSignIn(googleUser) {
-      const profile = googleUser.getBasicProfile();
 
-      document.getElementById("id_token").value = googleUser.getAuthResponse().id_token;
+      if (!(document.getElementById('msg_error'))) {
+        const profile = googleUser.getBasicProfile();
 
-      const id_token = googleUser.getAuthResponse().id_token;
-      console.log("ID Token: " + id_token);
+        document.getElementById("id_token").value = googleUser.getAuthResponse().id_token;
 
-      // document.getElementById("login_form").submit();
+        document.getElementById("login_form").submit();
+      }
     }
   </script>
 </div>
