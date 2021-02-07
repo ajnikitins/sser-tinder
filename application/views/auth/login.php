@@ -3,26 +3,22 @@
 
 <div id="infoMessage"><?php echo $message; ?></div>
 
-<?php echo form_open("auth/login"); ?>
-
-<p>
-    <?php echo lang('login_identity_label', 'identity'); ?>
-    <?php echo form_input($identity); ?>
-</p>
-
-<p>
-    <?php echo lang('login_password_label', 'password'); ?>
-    <?php echo form_input($password); ?>
-</p>
-
-<p>
-    <?php echo lang('login_remember_label', 'remember'); ?>
-    <?php echo form_checkbox('remember', '1', false, 'id="remember"'); ?>
-</p>
-
-
-<p><?php echo form_submit('submit', lang('login_submit_btn')); ?></p>
-
+<?php echo form_open('user/login', array('id' => 'login_form')); ?>
+<?php echo form_input($id_token); ?>
 <?php echo form_close(); ?>
 
-<p><a href="forgot_password"><?php echo lang('login_forgot_password'); ?></a></p>
+<div class="g-signin2" data-onsuccess="onSignIn" data-longtitle="true" data-theme="dark"></div>
+
+<script>
+function onSignIn(googleUser) {
+
+  if (!(document.getElementById('msg_error'))) {
+    const profile = googleUser.getBasicProfile();
+
+    document.getElementById("id_token").value = googleUser.getAuthResponse().id_token;
+
+    document.getElementById("login_form").submit();
+  }
+}
+</script>
+
