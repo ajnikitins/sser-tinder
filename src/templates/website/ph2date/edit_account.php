@@ -35,27 +35,22 @@ $this->load->view('loged_in_side');
 
   <div class="form-group">
     <label for="first_name"><?=lang('edit_user_fname_label')?></label>
-    <input required="required" type="text" class="form-control" id="first_name" name="first_name" value="<?php echo strip_tags($user->first_name)?>">
+    <input required="required" type="text" class="form-control" id="first_name" name="first_name" value="<?php echo strip_tags($user->first_name)?>" disabled>
   </div>
 
   <div class="form-group">
     <label for="last_name"><?=lang('edit_user_lname_label')?></label>
-    <input required="required" type="text" class="form-control" id="last_name" name="last_name" value="<?php echo strip_tags($user->last_name)?>">
+    <input required="required" type="text" class="form-control" id="last_name" name="last_name" value="<?php echo strip_tags($user->last_name)?>" disabled>
   </div>
 
   <div class="form-group">
     <label for="email"><?=lang('edit_user_email_label')?></label>
-    <input required="required" type="email" class="form-control" id="email" name="email" value="<?php echo strip_tags($user->email)?>">
+    <input required="required" type="email" class="form-control" id="email" name="email" value="<?php echo strip_tags($user->email)?>" disabled>
   </div>
 
   <div class="form-group">
     <label for="country"><?=lang('user_country')?></label>
     <input required="required" type="text" class="form-control" id="country" name="country" value="<?php echo strip_tags($user->country)?>">
-  </div>
-
-  <div class="form-group">
-    <label for="state"><?=lang('user_state')?></label>
-    <input required="required" type="text" class="form-control" id="state" name="state" value="<?php echo strip_tags($user->state)?>">
   </div>
 
   <div class="form-group">

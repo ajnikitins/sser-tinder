@@ -61,7 +61,6 @@
                     <li><a href="<?php echo site_url('user/matched'); ?>"><i class="fa fa-check-circle"></i> <?=lang('menu_match')?></a></li>
                     <li><a href="<?php echo site_url('user/profile'); ?>"><i class="fa fa-male"></i> <?=lang('menu_personal_info')?></a></li>
                     <li><a href="<?php echo site_url('user/edit_account'); ?>"><i class="fa fa-pencil-square-o"></i> <?=lang('menu_update_setting')?></a></li>
-                    <li><a href="<?php echo site_url('user/change_password'); ?>"><i class="fa fa-shield"></i> <?=lang('menu_change_password')?></a></li>
                     <li><a href="<?php echo site_url('user/delete'); ?>"><i class="fa fa-remove"></i> <?=lang('menu_delete_account')?></a></li>
                     <li><a href="<?php echo site_url('user/logout'); ?>"><i class="fa fa-sign-out"></i> <?=lang('menu_logout')?></a></li>
                   </ul>

@@ -292,11 +292,6 @@ class User extends Website_Controller
 
     public function edit_account()
     {
-
-        $this->form_validation->set_rules('first_name', 'first_name', 'required');
-        $this->form_validation->set_rules('last_name', 'last_name', 'required');
-        $this->form_validation->set_rules('email', 'email', 'required');
-
         $config['upload_path'] = './assets/uploads/member/';
         $config['encrypt_name'] = true; // Encrypt filenames uploaded
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -310,11 +305,7 @@ class User extends Website_Controller
 
         if ($this->form_validation->run() === true) {
             $data = array(
-                'first_name' => $this->input->post('first_name', true),
-                'last_name' => $this->input->post('last_name', true),
-                'email' => $this->input->post('email', true),
                 'country' => $this->input->post('country', true),
-                'state' => $this->input->post('state', true),
                 'city' => $this->input->post('city', true),
                 'sex' => $this->input->post('sex', true),
                 'prefer_opposite_sex' => $this->input->post('prefer_opposite_sex'),
@@ -328,7 +319,7 @@ class User extends Website_Controller
             }
 
             $this->ion_auth->update($user->id, $data);
-            $this->session->set_flashdata('msg_success_right', "your data updated");
+            $this->session->set_flashdata('msg_success_right', "Your profile has been updated.");
             redirect('user/profile');
         }
         $this->data['user'] = $this->ion_auth->user()->row();
@@ -490,12 +481,6 @@ class User extends Website_Controller
                         $additional_data = array(
                             'first_name' => $payload['given_name'],
                             'last_name' => $payload['family_name'],
-                            'country' => '',
-                            'state' => '',
-                            'city' => '',
-//                            'sex' => '',
-                            'phone' => '',
-//                            'profile_photo' => $payload['picture'],
                             'prefer_opposite_sex' => true
                         );
 
@@ -998,12 +983,10 @@ class User extends Website_Controller
         $data = json_decode(file_get_contents("http://freegeoip.net/json/$ip"), true);
 
         $data['country'] = $data['country_name'];
-        $data['state'] = $data['region_name'];
         $data['city'] = $data['city'];
         if (!empty($data)) {
             $data = array();
             $data['country'] = 'other';
-            $data['state'] = 'other';
             $data['city'] = 'other';
         }
         return $data;
@@ -1041,8 +1024,6 @@ class User extends Website_Controller
         }
         if ($same_city)
             $this->db->where('city', $user->city);
-        if ($same_state)
-            $this->db->where('state', $user->state);
         if ($same_country)
             $this->db->where('country', $user->country);
 
