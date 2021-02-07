@@ -58,3 +58,11 @@ height: 34px;
     color: #428bca;
     line-height: 100px;
 }
+
+.g-signin2{
+  width: 100%;
+}
+
+.g-signin2 > div{
+  margin: 0 auto;
+}

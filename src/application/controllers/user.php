@@ -478,9 +478,12 @@ class User extends Website_Controller
                         $this->session->set_flashdata('msg_success_left', $this->ion_auth->messages());
                         redirect('/', 'refresh');
                     } else {
+                        $city_data = $this->_city();
                         $additional_data = array(
                             'first_name' => $payload['given_name'],
                             'last_name' => $payload['family_name'],
+                            'country' => $city_data['country'],
+                            'city' => $city_data['city'],
                             'prefer_opposite_sex' => true
                         );
 
@@ -985,10 +988,11 @@ class User extends Website_Controller
         } else {
             $ip = $_SERVER['REMOTE_ADDR'];
         }
-        $data = json_decode(file_get_contents("http://freegeoip.net/json/$ip"), true);
+        $response = json_decode(file_get_contents("http://ip-api.com/json/$ip"), true);
 
-        $data['country'] = $data['country_name'];
-        $data['city'] = $data['city'];
+        $data = array();
+        $data['country'] = $response['country_name'];
+        $data['city'] = $response['city'];
         if (!empty($data)) {
             $data = array();
             $data['country'] = 'other';

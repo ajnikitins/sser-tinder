@@ -2,8 +2,8 @@
 
 $lang['not_found'] = 'Page Not Found!';
 $lang['recommended_users'] = 'Recommended Users';
-$lang['no_recommended_users'] = 'Sorry , we can not find users near you right now , please visit us soon.';
-$lang['edit_account'] = 'Edit my account';
+$lang['no_recommended_users'] = 'Sorry, we can not find users near you right now. Please visit us soon!';
+$lang['edit_account'] = 'Edit Account';
 $lang['change_Password'] = 'Change Password';
 $lang['like_user'] = 'Like';
 $lang['pass_user'] = 'Pass';
@@ -13,8 +13,8 @@ $lang['user_name'] = 'Name';
 $lang['user_sex'] = 'Sex';
 $lang['user_sex_m'] = 'Male';
 $lang['user_sex_f'] = 'Female';
-$lang['user_country'] = 'Country';
-$lang['user_city'] = 'City';
+$lang['user_country'] = 'Country (Used to match with others in the same country)';
+$lang['user_city'] = 'City (Used to match with others in the same city)';
 $lang['user_state'] = 'State';
 $lang['prefer_opposite_sex'] = 'Show Opposite Sex';
 $lang['profile_photo'] = 'Profile Photo';
@@ -39,8 +39,8 @@ $lang['menu_manage_videos'] = 'Manage Videos';
 $lang['menu_delete_account'] = 'Delete Account';
 $lang['menu_logout'] = 'Logout';
 
-$lang['delete_account'] = 'Delete your account';
-$lang['delete_account_desc'] = 'This is a final step , if you confirm all your data will be removed';
+$lang['delete_account'] = 'Delete Your Account';
+$lang['delete_account_desc'] = 'This is a final step, if you confirm all your data will be removed';
 $lang['agree'] = 'I agree';
 
 $lang['my_videos'] = 'My videos';
