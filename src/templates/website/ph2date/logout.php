@@ -14,26 +14,11 @@ $this->load->view('loged_in_side');
 
   <div class="g-signin2" data-onsuccess="onSignIn" style="display:none"></div>
 
-<h1><?=lang('delete_account')?></h1>
-<div class="clr"></div>
-</br>
-<p><?=lang('delete_account_desc')?></p>
-<a class="btn btn-default" href="#" onclick="onClickAgree(); return false;"><?=lang('agree')?></a>
-
   <script>
-    let isLoaded = false;
-
-    function onSignIn() {
-      isLoaded = true;
-
-    }
-
-    function onClickAgree() {
-      if (isLoaded) {
-        gapi.auth2.getAuthInstance().disconnect();
-        window.location.href="<?=site_url('user/delete/do')?>"
+      function onSignIn() {
+        gapi.auth2.getAuthInstance().signOut();
+        window.location.href="<?=site_url('user/logout/do')?>"
       }
-    }
   </script>
 
 </div>

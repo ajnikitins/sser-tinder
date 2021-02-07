@@ -641,12 +641,17 @@ class User extends Website_Controller
 //        }
 //    }
 
-    public function logout()
+    public function logout($confirm = false)
     {
         $this->_logged_in();
-        $this->ion_auth->logout();
-        $this->session->set_flashdata('msg_success_left', $this->ion_auth->messages());
-        redirect('user/login', 'refresh');
+
+        if ($confirm == 'do') {
+            $this->ion_auth->logout();
+            $this->session->set_flashdata('msg_success_left', $this->ion_auth->messages());
+            redirect('user/login', 'refresh');
+        } else {
+            $this->load->view('logout', $this->data);
+        }
     }
 
 //    public function activate($id, $code = false)
