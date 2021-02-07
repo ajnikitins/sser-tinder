@@ -1,3 +1,4 @@
 *.env
+docker-compose.yml
 
-/src/application/third_party/*/
+/application/third_party/*/
