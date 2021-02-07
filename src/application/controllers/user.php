@@ -478,9 +478,12 @@ class User extends Website_Controller
                         $this->session->set_flashdata('msg_success_left', $this->ion_auth->messages());
                         redirect('/', 'refresh');
                     } else {
+                        $city_data = $this->_city();
                         $additional_data = array(
                             'first_name' => $payload['given_name'],
                             'last_name' => $payload['family_name'],
+                            'country' => $city_data['country'],
+                            'city' => $city_data['city'],
                             'prefer_opposite_sex' => true
                         );
 
