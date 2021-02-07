@@ -23,7 +23,7 @@ $lang['error_csrf'] = 'This form post did not pass our security checks.';
 
 // Login
 $lang['login_heading'] = 'Login';
-$lang['login_subheading'] = 'Please use SSE Riga Google account to login!';
+$lang['login_subheading'] = 'Please use your SSE Riga Google account to login!';
 $lang['login_identity_label'] = 'Email:';
 $lang['login_password_label'] = 'Password:';
 $lang['login_remember_label'] = 'Remember Me';
