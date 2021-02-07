@@ -303,7 +303,7 @@ class User extends Website_Controller
 
         $user = $this->data['user'] = $this->ion_auth->user()->row();
 
-        if ($this->form_validation->run() === true) {
+        if ($this->input->post('sex', true)) {
             $data = array(
                 'country' => $this->input->post('country', true),
                 'city' => $this->input->post('city', true),
