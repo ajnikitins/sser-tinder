@@ -18,49 +18,31 @@
 <p><?php echo lang('login_subheading');?></p>
 
 
-<?php echo form_open('user/login');?>
+<?php echo form_open('user/login', array('id' => 'login_form'));?>
 
-  <div class="form-group">
-    <?php echo lang('login_identity_label', 'identity');?>
-    <?php echo form_input($identity);?>
-  </div>
-
-  <div class="form-group">
-    <?php echo lang('login_password_label', 'password');?>
-    <?php echo form_input($password);?>
-  </div>
-
-  <div class="checkbox">
-  <label>
-      <input name='remember' id="remember" type="checkbox"> <?php echo lang('login_remember_label');?>
-    </label>
-  </div>
+  <?php echo form_input($id_token); ?>
 
   <p><?php echo form_submit('submit', lang('login_submit_btn'),'class="btn btn-default"');?></p>
-
 <?php echo form_close();?>
 
-<p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
   <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
   <script>
     function onSignIn(googleUser) {
-      let profile = googleUser.getBasicProfile();
-      console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-      console.log('Full Name: ' + profile.getName());
-      console.log('Given Name: ' + profile.getGivenName());
-      console.log('Family Name: ' + profile.getFamilyName());
-      console.log("Image URL: " + profile.getImageUrl());
-      console.log("Email: " + profile.getEmail());
+      const profile = googleUser.getBasicProfile();
 
-      var id_token = googleUser.getAuthResponse().id_token;
+      document.getElementById("id_token").value = googleUser.getAuthResponse().id_token;
+
+      const id_token = googleUser.getAuthResponse().id_token;
       console.log("ID Token: " + id_token);
+
+      // document.getElementById("login_form").submit();
     }
   </script>
 </div>
 </div>
 
-<?php $this->load->view('auth/register'); // Add the Register form view as well ?>
+<?php //$this->load->view('auth/register'); // Add the Register form view as well ?>
 
 <?=$setting->service_description ?>
 

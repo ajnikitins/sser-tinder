@@ -294,7 +294,7 @@ class User extends Website_Controller
 
     public function edit_account()
     {
-        
+
         $this->form_validation->set_rules('first_name', 'first_name', 'required');
         $this->form_validation->set_rules('last_name', 'last_name', 'required');
         $this->form_validation->set_rules('email', 'email', 'required');
@@ -472,86 +472,64 @@ class User extends Website_Controller
     {
         //$this->data['success'] = message_success
         $this->data['title'] = "Login";
-        $this->form_validation->set_rules('identity', 'Identity', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('id_token', 'Identity', 'required');
         if ($this->ion_auth->logged_in()) {
             redirect('user', 'refresh');
         }
         if ($this->form_validation->run()) {
-            $remember = (bool)$this->input->post('remember');
 
-            if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember)) {
-                $this->session->set_flashdata('msg_success_left', $this->ion_auth->messages());
+            $client = new $this->google(['client_id' => '426367933322-cnnpspaob854ek5r4m52mvj7bjpl6k66.apps.googleusercontent.com']);
+            $payload = $client->verifyIdToken($this->input->post('id_token'));
 
-                redirect('/', 'refresh');
+            if ($payload) {
+                if ($payload['hd'] == 'sseriga.edu') {
+                    $email = $payload['email'];
+
+                    if ($this->ion_auth->login($email, '12345678', true)) {
+                        $this->session->set_flashdata('msg_success_left', $this->ion_auth->messages());
+                        redirect('/', 'refresh');
+                    } else {
+                        $additional_data = array(
+                            'first_name' => $payload['given_name'],
+                            'last_name' => $payload['family_name'],
+                            'country' => '',
+                            'state' => '',
+                            'city' => '',
+//                            'sex' => '',
+                            'phone' => '',
+//                            'profile_photo' => $payload['picture'],
+                            'prefer_opposite_sex' => true
+                        );
+
+                        if ($this->ion_auth->register($email, '12345678', $email, $additional_data)) {
+                            $this->ion_auth->login($email, '12345678', true);
+                            //check to see if we are creating the user
+                            //redirect them back to the admin page
+                            $this->session->set_flashdata('msg_success_left', "Account has been created successfully. <br> Take some time to finish your profile, add a photo and write a bio for yourself! :)");
+                            redirect("user/edit_account", 'refresh');
+                        } else {
+                            $this->session->set_flashdata('msg_error_left', $this->ion_auth->errors());
+                            redirect("user/login", 'refresh');
+                        }
+                    }
+
+                } else {
+                    $this->session->set_flashdata('msg_error_left', 'Invalid domain. Please, try to log in with an SSE Riga email!');
+                    redirect('user/login', 'refresh');
+                }
             } else {
-                $this->session->set_flashdata('msg_error_left', $this->ion_auth->errors());
-                redirect('user/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
+                $this->session->set_flashdata('msg_error_left', 'Invalid ID token. Please, try again!');
+                redirect('user/login', 'refresh');
             }
+
         } else {
             $this->msg_error_left = (validation_errors()) ? validation_errors() : $this->session->flashdata('msg_error_left');
 
-            $this->data['identity'] = array('name' => 'identity',
-                'id' => 'identity',
-                'type' => 'email',
-                'class' => "form-control",
+            $this->data['id_token'] = array('name' => 'id_token',
+                'id' => 'id_token',
+                'type' => 'hidden',
                 'required' => "required",
-                'value' => $this->form_validation->set_value('identity'),
-            );
-            $this->data['password'] = array('name' => 'password',
-                'id' => 'password',
-                'type' => 'password',
-                'required' => "required",
-                'class' => "form-control",
-            );
-            $this->data['first_name'] = array(
-                'name' => 'first_name',
-                'id' => 'first_name',
-                'type' => 'text',
-                'required' => "required",
-                'class' => "form-control",
-                'value' => $this->form_validation->set_value('first_name'),
-            );
-            $this->data['last_name'] = array(
-                'name' => 'last_name',
-                'id' => 'last_name',
-                'type' => 'text',
-                'required' => "required",
-                'class' => "form-control",
-                'value' => $this->form_validation->set_value('last_name'),
-            );
-            $this->data['email'] = array(
-                'name' => 'email',
-                'id' => 'email',
-                'type' => 'email',
-                'required' => "required",
-                'class' => "form-control",
-                'value' => $this->form_validation->set_value('email'),
-            );
-
-            $this->data['phone'] = array(
-                'name' => 'phone',
-                'id' => 'phone',
-                'required' => "required",
-                'type' => 'tel',
-                'class' => "form-control",
-                'value' => $this->form_validation->set_value('phone'),
-            );
-            $this->data['password'] = array(
-                'name' => 'password',
-                'id' => 'password',
-                'type' => 'password',
-                'required' => "required",
-                'class' => "form-control",
-                'value' => $this->form_validation->set_value('password'),
-            );
-            $this->data['password_confirm'] = array(
-                'name' => 'password_confirm',
-                'id' => 'password_confirm',
-                'type' => 'password',
-                'required' => "required",
-                'class' => "form-control",
-                'value' => $this->form_validation->set_value('password_confirm'),
+                'value' => $this->form_validation->set_value('id_token'),
             );
 
             $this->_render_page('auth/login', $this->data);

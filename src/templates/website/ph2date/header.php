@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title><?=strip_tags($setting->site_title)?></title>
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-  //Setup for Google SignIn
+<!--  Setup for Google SignIn-->
   <script src="https://apis.google.com/js/platform.js" defer ></script>
   <meta name="google-signin-client_id" content="426367933322-cnnpspaob854ek5r4m52mvj7bjpl6k66.apps.googleusercontent.com">
 
