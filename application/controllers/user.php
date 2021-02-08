@@ -71,6 +71,7 @@ class User extends Website_Controller
     public function message_box($username = null)
     {
         $this->_logged_in();
+        $username = urldecode($username);
         $this->form_validation->set_rules('message', 'message', 'required');
         $other_user = $this->data['other_user'] = $this->db->get_where('users', array('username' => $username))->row();
         if (!empty($other_user)) {
@@ -307,10 +308,12 @@ class User extends Website_Controller
         $user = $this->data['user'] = $this->ion_auth->user()->row();
 
         if ($this->form_validation->run() === true) {
+
+            $username = convert_accented_characters(str_replace(' ', '_', mb_strtolower($this->input->post('first_name', true) . '_' . $this->input->post('last_name', true))));
             $data = array(
                 'first_name' => strip_tags($this->input->post('first_name', true)),
                 'last_name' => strip_tags($this->input->post('last_name', true)),
-                'username' => strip_tags(str_replace(' ', '_', mb_strtolower($this->input->post('first_name', true)) . '_' . mb_strtolower($this->input->post('last_name', true)))),
+                'username' => $username,
                 'country' => strip_tags($this->input->post('country', true)),
                 'city' => strip_tags($this->input->post('city', true)),
                 'sex' => strip_tags($this->input->post('sex', true)),

@@ -30,11 +30,28 @@
   border-color: #F3DCBA;
 }
 
-.page-header {margin:20px 0 20px}
+/*I'm sorry for this*/
+.navbar-default .navbar-nav li a {
+  color: #470B14;
+}
+
+.page-header {
+  margin:20px 0 20px;
+  border-color: #F0D4A8;
+  text-align: center;
+}
+
+
 
 select, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
 height: 34px;
 }
+
+.form-control, .form-control[disabled] {
+  background: #F6E5CB;
+  border-color: #F6E5CB;
+}
+
 
 .middle {vertical-align:middle !important;}
 .top {position:absolute;top:0 !important;}
@@ -90,16 +107,6 @@ h1 {
 }
 
 h2 {
-  color: #470B14;
-}
-
-.page-header {
-  border-bottom: 1px solid #F0D4A8;
-  text-align: center;
-}
-
-/*I'm sorry for this*/
-.navbar-default .navbar-nav li a {
   color: #470B14;
 }
 

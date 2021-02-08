@@ -31,13 +31,13 @@
                              <div style="display:inline-block;padding:15px;">
                                 <h2><?=ucfirst(strip_tags($user->first_name))?></h2>
                                 <a href="#" class="btn btn-danger" style="width:120px;" onclick="javascript:chatWith('<?=strip_tags($user->username)?>');"><?=lang('send_message')?></a>
-                                <a href="<?=site_url('user/message_box/'.strip_tags($user->username))?>" class="btn btn-danger" style="margin-top:3px;width:120px;"><?=lang('view_message')?></a>
+                                <a href="<?=site_url('user/message_box/'.strip_tags($user->username))?>" class="btn btn-info" style="margin-top:3px;"><?=lang('view_message')?></a>
                             </div>
 
                     </div>
 
                     <div class="col-md-8">
-                        <table class="table table-striped">
+                        <table class="table">
                             <tr>
                                 <td class=""><?= lang('user_name') ?></td>
                                 <td class=""><?php echo strip_tags(ucfirst($user->first_name) . ' ' . ucfirst($user->last_name)) ?></td>
