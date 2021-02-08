@@ -484,7 +484,7 @@ class User extends Website_Controller
                     $email = $payload['email'];
 
                     if ($this->ion_auth->login($email, '12345678', true)) {
-                        $this->session->set_flashdata('msg_success_left', $this->ion_auth->messages());
+//                        $this->session->set_flashdata('msg_success_left', $this->ion_auth->messages());
                         redirect('/', 'refresh');
                     } else {
                         $city_data = $this->_city();
@@ -660,7 +660,7 @@ class User extends Website_Controller
 
         if ($confirm == 'do') {
             $this->ion_auth->logout();
-            $this->session->set_flashdata('msg_success_left', $this->ion_auth->messages());
+//            $this->session->set_flashdata('msg_success_left', $this->ion_auth->messages());
             redirect('user/login', 'refresh');
         } else {
             $this->load->view('logout', $this->data);
