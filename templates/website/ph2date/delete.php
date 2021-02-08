@@ -18,7 +18,7 @@ $this->load->view('loged_in_side');
 <div class="clr"></div>
 </br>
 <p><?=lang('delete_account_desc')?></p>
-<a class="btn btn-default" href="#" onclick="onClickAgree(); return false;"><?=lang('agree')?></a>
+<a class="btn btn-danger" href="#" onclick="onClickAgree(); return false;"><?=lang('agree')?></a>
 
   <script>
     let isLoaded = false;

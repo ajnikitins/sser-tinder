@@ -46,7 +46,7 @@
             <?php echo form_hidden('id', $user->id); ?>
             <?php echo form_hidden($csrf); ?>
 
-            <div class="form-group"><?php echo form_submit('submit', lang('edit_user_submit_btn'), 'class="btn btn-default"'); ?></div>
+            <div class="form-group"><?php echo form_submit('submit', lang('edit_user_submit_btn'), 'class="btn btn-danger"'); ?></div>
 
             <?php echo form_close(); ?>
         </div>

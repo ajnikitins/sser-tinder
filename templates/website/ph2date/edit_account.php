@@ -77,7 +77,7 @@ $this->load->view('loged_in_side');
     </label>
   </div>
 
-  <button type="submit" class="btn btn-default"><?=lang('edit_user_submit_btn')?></button>
+  <button type="submit" class="btn btn-danger"><?=lang('edit_user_submit_btn')?></button>
 </form>
 
 </div>

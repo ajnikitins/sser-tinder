@@ -5,12 +5,12 @@
 }
 
 .chatboxhead {
-    background-color: #ACC9FD;
+    background-color: #E34F54;
     padding: 7px;
     color: #ffffff;
 
-    border-right: 1px solid #ACC9FD;
-    border-left: 1px solid #ACC9FD;
+    border-right: 1px solid #E34F54;
+    border-left: 1px solid #E34F54;
 }
 
 .chatboxblink {
@@ -29,19 +29,19 @@
     overflow-y: auto;
     overflow-x: auto;
     padding: 7px;
-    border-left: 1px solid #cccccc;
-    border-right: 1px solid #cccccc;
-    border-bottom: 1px solid #eeeeee;
-    background-color: #ffffff;
+    border-left: 1px solid #F6E5CB;
+    border-right: 1px solid #F6E5CB;
+    border-bottom: 1px solid #F6E5CB;
+    background-color: #F6E5CB;
     line-height: 1.3em;
 }
 
 .chatboxinput {
     padding: 5px;
-    background-color: #ffffff;
-    border-left: 1px solid #cccccc;
-    border-right: 1px solid #cccccc;
-    border-bottom: 1px solid #cccccc;
+    background-color: #F3DCBA;
+    border-left: 1px solid #F3DCBA;
+    border-right: 1px solid #F3DCBA;
+    border-bottom: 1px solid #F3DCBA;
 }
 
 .chatboxtextarea {
