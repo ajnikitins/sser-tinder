@@ -308,14 +308,15 @@ class User extends Website_Controller
 
         if ($this->form_validation->run() === true) {
             $data = array(
-                'first_name' => $this->input->post('first_name', true),
-                'last_name' => $this->input->post('last_name', true),
-                'country' => $this->input->post('country', true),
-                'city' => $this->input->post('city', true),
-                'sex' => $this->input->post('sex', true),
+                'first_name' => strip_tags($this->input->post('first_name', true)),
+                'last_name' => strip_tags($this->input->post('last_name', true)),
+                'username' => strip_tags(str_replace(' ', '_', mb_strtolower($this->input->post('first_name', true)) . '_' . mb_strtolower($this->input->post('last_name', true)))),
+                'country' => strip_tags($this->input->post('country', true)),
+                'city' => strip_tags($this->input->post('city', true)),
+                'sex' => strip_tags($this->input->post('sex', true)),
                 'prefer_opposite_sex' => $this->input->post('prefer_opposite_sex'),
-                'phone' => $this->input->post('phone', true),
-                'bio' => $this->input->post('bio', true)
+                'phone' => strip_tags($this->input->post('phone', true)),
+                'bio' => strip_tags($this->input->post('bio', true))
             );
 
             if ($this->upload->do_upload('profile_photo')) {
@@ -491,8 +492,9 @@ class User extends Website_Controller
                             'city' => $city_data['city'],
                             'prefer_opposite_sex' => true
                         );
+                        $username = str_replace(' ', '_', mb_strtolower($additional_data['first_name']) . '_' . mb_strtolower($additional_data['last_name']));
 
-                        if ($this->ion_auth->register($email, '12345678', $email, $additional_data)) {
+                        if ($this->ion_auth->register($username, '12345678', $email, $additional_data)) {
                             $this->ion_auth->login($email, '12345678', true);
                             //check to see if we are creating the user
                             //redirect them back to the admin page
@@ -551,9 +553,9 @@ class User extends Website_Controller
 //        } else {
 //            // get identity from username or email
 //            if ($this->config->item('identity', 'ion_auth') == 'username') {
-//                $identity = $this->ion_auth->where('username', strtolower($this->input->post('email')))->users()->row();
+//                $identity = $this->ion_auth->where('username', mb_strtolower($this->input->post('email')))->users()->row();
 //            } else {
-//                $identity = $this->ion_auth->where('email', strtolower($this->input->post('email')))->users()->row();
+//                $identity = $this->ion_auth->where('email', mb_strtolower($this->input->post('email')))->users()->row();
 //            }
 //            if (empty($identity)) {
 //                $this->ion_auth->set_message('forgot_password_email_not_found');
@@ -733,8 +735,8 @@ class User extends Website_Controller
 //        $this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
 //
 //        if ($this->form_validation->run()) {
-//            $username = strtolower($this->input->post('first_name', true)) . '_' . strtolower($this->input->post('last_name', true));
-//            $email = strtolower($this->input->post('email', true));
+//            $username = mb_strtolower($this->input->post('first_name', true)) . '_' . mb_strtolower($this->input->post('last_name', true));
+//            $email = mb_strtolower($this->input->post('email', true));
 //            $password = $this->input->post('password');
 //            $city_data = $this->_city();
 //            $additional_data = array(
