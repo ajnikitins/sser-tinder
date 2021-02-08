@@ -16,15 +16,15 @@ $this->load->view('loged_in_side');
 <?php if($profile_owner): ?>
     <a href="<?php echo site_url('user/edit_account/'); ?>" class="btn btn-danger"><i class="fa fa-pencil-square-o"></i> <?=lang('edit_account')?></a>
 <?php elseif(!$liked): ?>
-    <a href="<?php echo site_url('user/like/'.$user->id); ?>" class="btn btn-danger" ><?=lang('like_user')?></a>
+    <a href="<?php echo site_url('user/like/'.$user->id); ?>" class="btn btn-success" ><?=lang('like_user')?></a>
     <a href="<?php echo site_url('user/pass/'.$user->id); ?>" class="btn btn-danger" ><?=lang('pass_user')?></a>
-    <a href="#" class="btn btn-danger" onclick="javascript:chatWith('<?=strip_tags($user->username)?>');"><?=lang('send_message')?></a>
+    <a href="#" class="btn btn-info" onclick="javascript:chatWith('<?=strip_tags($user->username)?>');"><?=lang('send_message')?></a>
 <?php else: ?>
-    <a href="#" class="btn btn-danger" onclick="javascript:chatWith('<?=strip_tags($user->username)?>');"><?=lang('send_message')?></a>
+    <a href="#" class="btn btn-info" onclick="javascript:chatWith('<?=strip_tags($user->username)?>');"><?=lang('send_message')?></a>
 <?php endif ?>
 <br/><br/>
 
-<table class="table table-striped">
+<table class="table">
 <tr>
   <td class=""><?=lang('user_name')?></td>
   <td class=""><?php echo strip_tags(ucfirst($user->first_name) .' '. ucfirst($user->last_name)) ?></td>

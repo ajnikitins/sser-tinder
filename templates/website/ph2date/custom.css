@@ -26,8 +26,8 @@
     overflow:hidden;
 }
 .navbar-default {
-background-color: rgba(255, 255, 255, 0.09);
-border-color: rgba(255, 255, 255, 0.09);
+  background-color: #F3DCBA;
+  border-color: #F3DCBA;
 }
 
 .page-header {margin:20px 0 20px}

@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8">
   <title><?=strip_tags($setting->site_title)?></title>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Limelight">
+
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 <!--  Setup for Google SignIn-->
   <script src="https://apis.google.com/js/platform.js"></script>
@@ -52,7 +55,7 @@
 <div class="container" >
 
 <div class="page-header">
-  <a href="<?=site_url()?>"><img src="<?php echo $this->current_template_url ?>images/SAheart.png" alt="<?=strip_tags($setting->site_title)?>" title="<?=strip_tags($setting->site_title)?>" style="width=100px;height:100px;"/></a>
+  <a href="<?=site_url()?>"><img src="<?php echo $this->current_template_url ?>images/VD_logo_big.png" alt="<?=strip_tags($setting->site_title)?>" title="<?=strip_tags($setting->site_title)?>" style="width=150px;height:150px;"/></a>
 </div>
 
 <?php if(isset($message_top) AND !empty($message_top)): ?>
