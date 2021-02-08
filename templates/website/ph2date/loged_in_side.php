@@ -12,23 +12,27 @@
         <h1><?php echo lang('login_heading');?></h1>
         <p><?php echo lang('login_subheading');?></p>
 
-        <?php echo form_open('user/login') ?>
+            <?php echo form_open('user/login', array('id' => 'login_form')); ?>
 
           <div class="form-group">
-            <label for="identity"><?php echo lang('login_identity_label');?></label>    <input type="email" name="identity" value="" id="identity" class="form-control">  </div>
+            <input type="hidden" name="id_token" value="" id="id_token" class="form-control">  </div>
 
-          <div class="form-group">
-            <label for="password"><?php echo lang('login_password_label');?></label>    <input type="password" name="password" value="" id="password" class="form-control">  </div>
+            <?php echo form_close(); ?>
 
-          <div class="checkbox">
-          <label>
-              <input name="remember" id="remember" type="checkbox"><?php echo lang('login_remember_label');?></label>
-          </div>
+          <div class="g-signin2" data-onsuccess="onSignIn" data-longtitle="true" data-theme="dark"></div>
 
-          <p><input type="submit" name="submit" value="<?php echo lang('login_submit_btn');?>" class="btn btn-default"></p>
+          <script>
+            function onSignIn(googleUser) {
 
-        </form>
-        <p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
+              if (!(document.getElementById('msg_error'))) {
+                const profile = googleUser.getBasicProfile();
+
+                document.getElementById("id_token").value = googleUser.getAuthResponse().id_token;
+
+                document.getElementById("login_form").submit();
+              }
+            }
+          </script>
         </div>
     </div>
 <?php else: ?>
