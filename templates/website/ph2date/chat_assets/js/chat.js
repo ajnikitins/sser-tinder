@@ -64,7 +64,7 @@ function restructureChatBoxes() {
             if (align == 0) {
                 jQuery("#chatbox_"+chatboxtitle).css('right', '20px');
             } else {
-                width = (align)*(225+7)+20;
+                width = (align)*(300+7)+20;
                 jQuery("#chatbox_"+chatboxtitle).css('right', width+'px');
             }
             align++;
