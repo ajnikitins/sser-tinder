@@ -21,7 +21,7 @@ $lang['profile_photo'] = 'Profile Photo';
 
 $lang['my_messages'] = 'My messages :';
 $lang['visit_profile'] = 'Visit profile';
-$lang['matched_users'] = 'Matched users :';
+$lang['matched_users'] = 'Users who\'ve liked you :';
 $lang['edit_password'] = 'Edit account password:';
 
 
@@ -29,7 +29,7 @@ $lang['menu_user_area'] = ' My Area';
 $lang['menu_toggle'] = 'Toggle Navigation';
 $lang['menu_user_menu'] = 'My Menu';
 $lang['menu_recommendition'] = 'Recommendations';
-$lang['menu_match'] = 'My Matches';
+$lang['menu_match'] = 'My Simps';
 $lang['menu_personal_info'] = 'Personal Information';
 $lang['menu_update_setting'] = 'Edit Profile';
 $lang['menu_change_password'] = 'Change Password';

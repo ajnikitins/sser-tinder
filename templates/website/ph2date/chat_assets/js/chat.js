@@ -121,7 +121,7 @@ function createChatBox(chatboxtitle,minimizeChatBox) {
     if (chatBoxeslength == 0) {
         jQuery("#chatbox_"+chatboxtitle).css('right', '20px');
     } else {
-        width = (chatBoxeslength)*(225+7)+20;
+        width = (chatBoxeslength)*(300+7)+20;
         jQuery("#chatbox_"+chatboxtitle).css('right', width+'px');
     }
 
