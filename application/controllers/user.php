@@ -1052,6 +1052,7 @@ class User extends Website_Controller
             $this->session->set_flashdata('msg_success_right', "you liked $otheruser->first_name");
             $where['user_id'] = $id;
             $where['liked_user_id'] = $user->id;
+            $where['operation'] = "like";
             $liked_user_match = $this->db->get_where('user_likes', $where)->row();
             if (!empty($liked_user_match)) {
                 $data = array();
