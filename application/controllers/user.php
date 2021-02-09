@@ -293,9 +293,6 @@ class User extends Website_Controller
 
     public function edit_account()
     {
-        $this->form_validation->set_rules('first_name', 'first_name', 'required');
-        $this->form_validation->set_rules('last_name', 'last_name', 'required');
-
         $config['upload_path'] = './assets/uploads/member/';
         $config['encrypt_name'] = true; // Encrypt filenames uploaded
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -307,13 +304,9 @@ class User extends Website_Controller
 
         $user = $this->data['user'] = $this->ion_auth->user()->row();
 
-        if ($this->form_validation->run() === true) {
+        if ($this->input->post('sex', true)) {
 
-            $username = convert_accented_characters(str_replace(' ', '_', mb_strtolower($this->input->post('first_name', true) . '_' . $this->input->post('last_name', true))));
             $data = array(
-                'first_name' => strip_tags($this->input->post('first_name', true)),
-                'last_name' => strip_tags($this->input->post('last_name', true)),
-                'username' => $username,
                 'country' => strip_tags($this->input->post('country', true)),
                 'city' => strip_tags($this->input->post('city', true)),
                 'sex' => strip_tags($this->input->post('sex', true)),

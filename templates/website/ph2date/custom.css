@@ -47,9 +47,13 @@ select, input[type="text"], input[type="password"], input[type="datetime"], inpu
 height: 34px;
 }
 
-.form-control, .form-control[disabled] {
+.form-control {
   background: #F6E5CB;
   border-color: #F6E5CB;
+}
+
+.form-control[disabled] {
+  background: #FAD5C3;
 }
 
 

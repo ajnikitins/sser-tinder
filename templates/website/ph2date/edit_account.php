@@ -35,12 +35,12 @@ $this->load->view('loged_in_side');
 
   <div class="form-group">
     <label for="first_name"><?=lang('edit_user_fname_label')?></label>
-    <input required="required" type="text" class="form-control" id="first_name" name="first_name" value="<?php echo strip_tags($user->first_name)?>">
+    <input required="required" type="text" class="form-control" id="first_name" name="first_name" value="<?php echo strip_tags($user->first_name)?>" disabled>
   </div>
 
   <div class="form-group">
     <label for="last_name"><?=lang('edit_user_lname_label')?></label>
-    <input required="required" type="text" class="form-control" id="last_name" name="last_name" value="<?php echo strip_tags($user->last_name)?>">
+    <input required="required" type="text" class="form-control" id="last_name" name="last_name" value="<?php echo strip_tags($user->last_name)?>" disabled>
   </div>
 
   <div class="form-group">
