@@ -1039,6 +1039,23 @@ class User extends Website_Controller
         return $recomend;
     }
 
+    // Used to fix matches with users who were passed
+    public function delete_fakes() {
+        $matches = $this->db->get('match');
+        $this->db->where('operation', "pass");
+        $user_likes = $this->db->get_where('user_likes');
+
+        foreach ($matches->result() as $match) {
+            foreach ($user_likes->result() as $row) {
+                if (($row->user_id == $match->matched_user_id && $row->liked_user_id == $match->user_id)) {
+                    echo "$match->match_id => $row->user_likes_id : $row->user_id = $match->user_id<br>";
+//                    $this->db->where('match_id', $match->match_id);
+//                    $this->db->delete('match');
+                }
+            }
+        }
+    }
+
     private function _operation($id, $operation)
     {
         $user = $this->ion_auth->user()->row();
