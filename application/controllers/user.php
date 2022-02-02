@@ -504,7 +504,7 @@ class User extends Website_Controller
 
                 } else {
                     $this->session->set_flashdata('msg_error_left', 'Invalid domain. Please try to log in with an SSE Riga / RGSL email!');
-                    redirect('user/login', 'refresh');
+                    $this->load->view('logout', $this->data);
                 }
             } else {
                 $this->session->set_flashdata('msg_error_left', 'Invalid ID token. Please try again!');
