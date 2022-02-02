@@ -473,7 +473,7 @@ class User extends Website_Controller
             $payload = $client->verifyIdToken($this->input->post('id_token'));
 
             if ($payload) {
-                if ($payload['hd'] == 'sseriga.edu') {
+                if ($payload['hd'] == 'sseriga.edu' || $payload['hd'] == 'rgsl.edu.lv') {
                     $email = $payload['email'];
 
                     if ($this->ion_auth->login($email, '12345678', true)) {
@@ -503,7 +503,7 @@ class User extends Website_Controller
                     }
 
                 } else {
-                    $this->session->set_flashdata('msg_error_left', 'Invalid domain. Please try to log in with an SSE Riga email!');
+                    $this->session->set_flashdata('msg_error_left', 'Invalid domain. Please try to log in with an SSE Riga / RGSL email!');
                     redirect('user/login', 'refresh');
                 }
             } else {
