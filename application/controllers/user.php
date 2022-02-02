@@ -472,8 +472,10 @@ class User extends Website_Controller
             $client = new $this->google(['client_id' => '426367933322-cnnpspaob854ek5r4m52mvj7bjpl6k66.apps.googleusercontent.com']);
             $payload = $client->verifyIdToken($this->input->post('id_token'));
 
+            $domain = explode('@', $payload['email'])[1];
+
             if ($payload) {
-                if ($payload['hd'] == 'sseriga.edu' || $payload['hd'] == 'rgsl.edu.lv') {
+                if ($payload['hd'] == 'sseriga.edu' || $domain == 'rgsl.edu.lv') {
                     $email = $payload['email'];
 
                     if ($this->ion_auth->login($email, '12345678', true)) {
