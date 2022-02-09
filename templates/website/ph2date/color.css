@@ -13,15 +13,30 @@
 .red{color:#F00}
 .gray{color:#999}
 
+@font-face {
+  font-family: Bugaki;
+  src: url("fonts/Bugaki-Regular.otf") format("opentype");
+}
+
 /*** Begin pH ***/
 
 /* Color pH */
-.pH0, .pH1{
-  color:#E34F54;
-  font-family: Limelight;
+.pH0, .pH1 {
+  color:#a53333;
+  font-family: Bugaki;
 }
+
+.pH0a, h1 {
+  color:#f7c7c7;
+  font-family: Bugaki;
+}
+
 .pH2{text-shadow: 1px 2px 1px #000}
-.pH3{color:#F0D4A8;text-shadow: 2px 1px 2px #000}
+.pH3{
+  color: #f4fdfc;
+  text-shadow: 2px 1px 2px #000;
+  font-weight: bold;
+}
 
 /* Hover pH */
 /*.pH0:hover {*/

@@ -55,7 +55,7 @@
 <div class="container" >
 
 <div class="page-header">
-  <a href="<?=site_url()?>"><img src="<?php echo $this->current_template_url ?>images/VD_logo_big.png" alt="<?=strip_tags($setting->site_title)?>" title="<?=strip_tags($setting->site_title)?>" style="width=150px;height:150px;"/></a>
+  <a href="<?=site_url()?>"><img src="<?php echo $this->current_template_url ?>images/heart_logo.png" alt="<?=strip_tags($setting->site_title)?>" title="<?=strip_tags($setting->site_title)?>" style="width=150px;height:150px;"/></a>
 </div>
 
 <?php if(isset($message_top) AND !empty($message_top)): ?>
